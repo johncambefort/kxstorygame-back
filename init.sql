@@ -1,0 +1,2 @@
+CREATE USER manager;
+ALTER USER manager WITH SUPERUSER;
