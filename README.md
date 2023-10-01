@@ -1,2 +1,3 @@
-# kxstorygame-back
-Rusy backend for a story word game 
+# README
+
+A containerized ruby-on-rails postgresql backend for the kxstorygame app!
