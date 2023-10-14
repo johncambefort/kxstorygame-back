@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  back:
+  kxback:
     build:
       context: .
       dockerfile: Dockerfile
@@ -33,7 +33,7 @@ services:
       context: .
       dockerfile: Dockerfile
     depends_on:
-      - back
+      - kxback
       - db
       - redis
     volumes:
