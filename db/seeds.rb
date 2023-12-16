@@ -20,24 +20,4 @@ stories = Story.create([
   },
 ])
 
-# Authors.create(name: 'Joshin Kx', stories: stories.first)
-
-
-# Simple
-# - users can read stories (index, show -> id, title, contents)
-# - users can create Stories (post -> title, contents)
-# - users can add sentences to the Story's contents (update -> title, contents)
-# - users can give a Story a title (update -> title)
-
-# Table: Stories
-# | id | title | contents |
-
-# Table: Authors
-# | id | name | stories |
-
-# Complex
-# every row in a Story's contents is a Sentence
-# we have a Sentences table
-
-# Schema
-# they can add to the stories (update) and potentially :delete from them down the road
+Game.create(status: 'active', story: stories.first)

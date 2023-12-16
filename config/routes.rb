@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "stories#index"
 
   resources :stories, only: %i[index show create update]
+  resources :games, only: %i[index show create update]
 end
