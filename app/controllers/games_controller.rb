@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GamesController < ApplicationController
   protect_from_forgery with: :null_session
 
@@ -17,7 +19,7 @@ class GamesController < ApplicationController
     if @game.update(params)
       render json: @game
     else
-      render :nothing => true, :status => 400
+      render nothing: true, status: :bad_request
     end
   end
 end
