@@ -36,9 +36,6 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 
-# throw errors if Gemfile has been modified since Gemfile.lock
-RUN bundle config build.nokogiri --use-system-libraries --global frozen 1
-
 RUN bundle check || bundle install
 
 COPY . ./
