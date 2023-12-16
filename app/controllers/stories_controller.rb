@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StoriesController < ApplicationController
   protect_from_forgery with: :null_session
 
@@ -17,7 +19,7 @@ class StoriesController < ApplicationController
     if @story.save
       render json: @story
     else
-      render :nothing => true, :status => 400
+      render nothing: true, status: :bad_request
     end
   end
 
@@ -27,7 +29,7 @@ class StoriesController < ApplicationController
     if @story.update(story_params)
       render json: @story
     else
-      render :nothing => true, :status => 400
+      render nothing: true, status: :bad_request
     end
   end
 
@@ -35,7 +37,6 @@ class StoriesController < ApplicationController
     @story = Story.find(params[id])
     @story.destroy!
   end
-
 
   private
 
