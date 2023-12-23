@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class Game < ApplicationRecord
-  has_one :story, dependent: :destroy
-
   validates :status, presence: true
   enum :status, %i[active archived]
 

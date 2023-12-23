@@ -12,14 +12,4 @@ class GamesController < ApplicationController
     res = { id: Game.create_game }
     render json: res
   end
-
-  def update
-    @game = Game.find(params[:id])
-
-    if @game.update(params)
-      render json: @game
-    else
-      render nothing: true, status: :bad_request
-    end
-  end
 end
