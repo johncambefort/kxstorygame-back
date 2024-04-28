@@ -1,5 +1,6 @@
-class Exceptions
+# frozen_string_literal: true
 
+class Exceptions
   class GenericError < RuntimeError
     attr_reader :code, :message
 
@@ -23,7 +24,7 @@ class Exceptions
   class NotFound < ApiError
     def initialize
       @code = 400
-      @message = "Resource not found"
+      @message = 'Resource not found'
     end
   end
 end
