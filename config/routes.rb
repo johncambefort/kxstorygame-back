@@ -2,11 +2,19 @@
 
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root 'static_pages#home'  
-  
-  scope controller: 'users', path: 'auth' do
-    get "/sign_up" => :new
-    post "/sign_up" => :create
+  root 'static_pages#home'
+
+  scope controller: 'users', path: 'users' do
+    get '/sign_up' => :new
+    post '/sign_up' => :create
+  end
+
+  resources :confirmations, only: %i[create edit new], param: :confirmation_token
+
+  scope controller: 'sessions' do
+    post '/login' => :create
+    get '/login' => :new
+    delete '/logout' => :destroy
   end
 
   resources :games, only: %i[index show create]
