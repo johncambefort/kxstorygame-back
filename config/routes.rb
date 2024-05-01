@@ -17,5 +17,7 @@ Rails.application.routes.draw do
     delete '/logout' => :destroy
   end
 
+  resources :passwords, only: %i[create edit new update], param: :password_reset_token
+
   resources :games, only: %i[index show create]
 end
