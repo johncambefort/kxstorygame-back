@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     delete '/logout' => :destroy
   end
 
+  scope controller: 'users' do
+    get '/account' => :edit
+    put '/account' => :update
+    delete '/account' => :destroy
+  end
+
   resources :passwords, only: %i[create edit new update], param: :password_reset_token
 
   resources :games, only: %i[index show create]
