@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_01_231606) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_02_193035) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,12 +25,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_01_231606) do
     t.index ["user_id"], name: "index_active_sessions_on_user_id"
   end
 
-  create_table "games", force: :cascade do |t|
-    t.integer "status"
+  create_table "poems", force: :cascade do |t|
+    t.string "lines"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "title"
-    t.text "contents"
+  end
+
+  create_table "poems_users", id: false, force: :cascade do |t|
+    t.bigint "poem_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["poem_id"], name: "index_poems_users_on_poem_id"
+    t.index ["user_id"], name: "index_poems_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -30,6 +30,4 @@ Rails.application.routes.draw do
       delete 'destroy_all'
     end
   end
-
-  resources :games, only: %i[index show create]
 end
