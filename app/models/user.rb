@@ -5,6 +5,7 @@ class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
   PASSWORD_RESET_TOKEN_EXPIRATION = 10.minutes
 
+  has_and_belongs_to_many :poems
   has_many :active_sessions, dependent: :destroy
   has_secure_password
   attr_accessor :current_password
