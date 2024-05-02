@@ -1,0 +1,8 @@
+<h2>Create a new poem</h2>
+<%= form_with model: @poem, url: poems_path do |form| %>
+  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+  <div>
+    <%= form.text_area :lines, required: true, size: "70x5" %>
+  </div>
+  <%= form.submit "Create your new poem" %>
+<% end %>
