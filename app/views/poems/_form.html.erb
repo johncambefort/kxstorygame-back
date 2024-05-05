@@ -1,0 +1,8 @@
+<%= form_with model: poem do |form| %>
+  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+  <div>
+    <%= form.text_area :lines, required: true, size: "70x5" %>
+  </div>
+  <%= form.button %>
+<% end %>
+  
