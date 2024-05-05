@@ -1,0 +1,17 @@
+<h2>All poems so far!</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Poem title (first & last word)</td>
+      <td>Poem link</td>
+    </tr>
+  </thead>
+  <% @poems.each do |poem| %>
+    <tbody>
+      <tr>
+        <td><%= poem.title %></td>
+        <td><%= button_to "View poem", poem_path(poem.id), method: :get %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

@@ -1,0 +1,11 @@
+<h2><%= @poem.title %></h2>
+<div>
+  <%= @poem.lines %>
+</div>
+
+<hr/>
+<h3>Authors</h3>
+<% @poem.users.each do |author| %>
+  <div><%= author.email %></div>
+<% end %>
+  
