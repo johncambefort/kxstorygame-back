@@ -3,15 +3,21 @@
 class PoemsController < ApplicationController
   before_action :authenticate_user!, except: :index
 
-  def new
-    @poem = Poem.new
-  end
-
   def index
     @poems = Poem.all
   end
 
   def show
+    @poem = Poem.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path
+  end
+
+  def new
+    @poem = Poem.new
+  end
+
+  def edit
     @poem = Poem.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
@@ -26,15 +32,14 @@ class PoemsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
-  
-  def edit
-    @poem = Poem.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to root_path
-  end
 
   def update
-    @poem = Poem.find_by_id(params[:id])
+    @poem = Poem.find(params[:id])
+    if @poem.users.last == current_user
+      redirect_to @poem,
+                  alert: 'You may not modify the poem until someone else does!' and return
+    end
+
     new_lines = new_lines_params[:new_lines]
 
     @poem.lines << "\r\n#{new_lines}"
@@ -52,12 +57,12 @@ class PoemsController < ApplicationController
   def poem_params
     p = params.require(:poem).permit(:lines)
     render :new, status: :unprocessable_entity if p[:lines].length > Poem::MAX_VERSE_CHAR_LENGTH
-    return p
+    p
   end
 
   def new_lines_params
     p = params.require(:poem).permit(:new_lines)
     render :new, status: :unprocessable_entity if p[:new_lines].length > Poem::MAX_VERSE_CHAR_LENGTH
-    return p
+    p
   end
 end
