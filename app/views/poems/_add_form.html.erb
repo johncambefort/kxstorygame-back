@@ -1,0 +1,11 @@
+<%= form_with model: poem do |form| %>
+  <%= render partial: "shared/form_errors", locals: { object: form.object } %>
+  <div>
+    <%= poem.lines %>
+  </div>
+  <div>
+    <%= form.text_field :new_lines, required: true, size: "50x5", maxlength: Poem::MAX_VERSE_CHAR_LENGTH %>
+  </div>
+  <%= form.button "Submit verse" %>
+<% end %>
+  
