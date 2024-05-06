@@ -1,5 +1,5 @@
 <h2><%= @poem.title %></h2>
-<p><%= @poem.lines %></p>
+<p><%= sanitize @poem.formatted_body %></p>
 
 <hr/>
 <h3>Authors</h3>
