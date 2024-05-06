@@ -21,7 +21,7 @@ class PoemsController < ApplicationController
     @poem = Poem.new(poem_params)
     @poem.users = [current_user]
     if @poem.lines.present? && @poem.save
-      redirect_to root_path, notice: 'Poem successfully created'
+      redirect_to @poem, notice: 'Poem successfully created'
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,8 +35,12 @@ class PoemsController < ApplicationController
 
   def update
     @poem = Poem.find_by_id(params[:id])
-    if @poem.update(poem_params)
-      @poem.users.push(current_user) if !@poem.users.include?(current_user)
+    new_lines = new_lines_params[:new_lines]
+
+    @poem.lines << "\r\n#{new_lines}"
+    @poem.users |= [current_user]
+
+    if @poem.save
       redirect_to @poem
     else
       render :edit, status: :unprocessable_entity
@@ -46,6 +50,14 @@ class PoemsController < ApplicationController
   private
 
   def poem_params
-    params.require(:poem).permit(:lines)
+    p = params.require(:poem).permit(:lines)
+    render :new, status: :unprocessable_entity if p[:lines].length > Poem::MAX_VERSE_CHAR_LENGTH
+    return p
+  end
+
+  def new_lines_params
+    p = params.require(:poem).permit(:new_lines)
+    render :new, status: :unprocessable_entity if p[:new_lines].length > Poem::MAX_VERSE_CHAR_LENGTH
+    return p
   end
 end

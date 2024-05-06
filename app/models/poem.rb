@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Poem < ApplicationRecord
+  MAX_VERSE_CHAR_LENGTH = 60
+
   has_and_belongs_to_many :users
 
   def title
