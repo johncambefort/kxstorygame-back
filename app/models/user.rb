@@ -14,7 +14,7 @@ class User < ApplicationRecord
   before_save :downcase_unconfirmed_email
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
   validates :unconfirmed_email, format: { with: URI::MailTo::EMAIL_REGEXP, allow_blank: true }
-
+  validates :username, format: { with: /\A[a-zA-Z]+\z/ }, length: { in: 4..20 }, presence: true, uniqueness: true
   def confirm!
     if unconfirmed_or_reconfirming?
       return false if unconfirmed_email.present? && !update(email: unconfirmed_email, unconfirmed_email: nil)

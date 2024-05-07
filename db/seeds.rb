@@ -7,5 +7,6 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-me = User.create(email: 'me@example.com', username: 'memyselfandi', confirmed_at: DateTime.now, password_digest: 'blah', unconfirmed_email: nil)
+me = User.create(email: 'me@example.com', username: 'memyselfandi', confirmed_at: DateTime.now,
+                 password_digest: 'blah', unconfirmed_email: nil)
 Poem.create(users: [me], lines: 'the orange fox jumped over the moon')
