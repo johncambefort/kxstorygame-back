@@ -42,13 +42,14 @@ class PoemsController < ApplicationController
 
     new_lines = new_lines_params[:new_lines]
 
-    @poem.lines << "\r\n#{new_lines}"
-    @poem.users |= [current_user]
-
-    if @poem.save
-      redirect_to @poem
-    else
-      render :edit, status: :unprocessable_entity
+    ActiveRecord::Base.transaction do
+      @poem.lines << "\r\n#{new_lines}"
+      @poem.users |= [current_user]
+      if @poem.save
+        redirect_to @poem
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
