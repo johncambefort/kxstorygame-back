@@ -5,6 +5,7 @@ FactoryBot.define do
     email { "factory@#{SecureRandom.hex(16)}.com" }
     confirmed_at { Time.zone.now }
     password_digest { SecureRandom.hex(16) }
+    username { SecureRandom.hex(16) }
 
     trait :unconfirmed do
       confirmed_at { nil }
