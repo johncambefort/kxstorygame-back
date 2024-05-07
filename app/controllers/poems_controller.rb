@@ -35,10 +35,11 @@ class PoemsController < ApplicationController
 
   def update
     @poem = Poem.find(params[:id])
-    if @poem.users.last == current_user
-      redirect_to @poem,
-                  alert: 'You may not modify the poem until someone else does!' and return
-    end
+    # FIXME: add last_poet column to poems to track this
+    # if @poem.users.last == current_user
+    #   redirect_to @poem,
+    #               alert: 'You may not modify the poem until someone else does!' and return
+    # end
 
     new_lines = new_lines_params[:new_lines]
 
