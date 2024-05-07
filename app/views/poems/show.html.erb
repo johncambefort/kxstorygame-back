@@ -2,8 +2,8 @@
 <p><%= sanitize @poem.formatted_body %></p>
 
 <hr/>
-<h3>Authors</h3>
-<% @poem.users.each do |author| %>
-  <div><%= author.username %></div>
+<h3>Poets</h3>
+<% @poem.users.each do |poet| %>
+  <div><%= poet.username %></div>
 <% end %>
   
