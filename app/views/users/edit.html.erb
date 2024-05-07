@@ -1,6 +1,10 @@
 <%= form_with model: @user, url: account_path, method: :put do |form| %>
   <%= render partial: "shared/form_errors", locals: { object: form.object } %>
   <div>
+    <%= form.label :username, "Username (shown next to your poems)" %>
+    <%= form.text_field :username %>
+  </div>
+  <div>
     <%= form.label :email, "Current Email" %>
     <%= form.email_field :email, disabled: true %>
   </div>
@@ -11,10 +15,6 @@
   <div>
     <%= form.label :password, "New password (leave blank if you don't want to change it)" %>
     <%= form.password_field :password %>
-  </div>
-  <div>
-    <%= form.label :username, "Your username (shown next to your poems)" %>
-    <%= form.text_field :username %>
   </div>
   <div>
     <%= form.label :password_confirmation %>
