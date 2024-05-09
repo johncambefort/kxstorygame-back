@@ -35,22 +35,18 @@ class PoemsController < ApplicationController
 
   def update
     @poem = Poem.find(params[:id])
-    # FIXME: add last_poet column to poems to track this
-    # if @poem.users.last == current_user
-    #   redirect_to @poem,
-    #               alert: 'You may not modify the poem until someone else does!' and return
-    # end
-
+    users = @poem.users
+    if users.last == current_user
+      redirect_to @poem,
+                  alert: 'You may not modify the poem until someone else does!' and return
+    end
     new_lines = new_lines_params[:new_lines]
-
-    ActiveRecord::Base.transaction do
-      @poem.lines << "\r\n#{new_lines}"
-      @poem.users |= [current_user]
-      if @poem.save
-        redirect_to @poem
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    @poem.lines << "\r\n#{new_lines}"
+    @poem.users.push(current_user)
+    if @poem.save
+      redirect_to @poem
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
