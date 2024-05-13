@@ -19,11 +19,9 @@ services:
         value: enabled
       - key: RAILS_SERVE_STATIC_FILES # Imported from Heroku app
         value: enabled
-      # - key: DATABASE_URL # Render PostgreSQL database
-      #   fromDatabase:
-      #     name: postgresql-closed-99916
-      #     property: connectionString
 
 databases: # Render PostgreSQL database
   - name: postgres-db
+    plan: free
+
     # ipAllowList: [] # only allow internal connections
