@@ -14,7 +14,7 @@ RUN apk add --update --no-cache \
       libstdc++ \
       libffi-dev \
       libc-dev \ 
-			gcompat \
+      gcompat \
       linux-headers \
       libxml2-dev \
       libxslt-dev \
@@ -25,19 +25,19 @@ RUN apk add --update --no-cache \
       openssl \
       pkgconfig \
       postgresql-dev \
-			postgresql-client \
+      postgresql-client \
       python3 \
       tzdata \
-			bash
+      bash
 
 RUN gem install bundler -v 2.4.20
 
-WORKDIR /app
-
 COPY Gemfile Gemfile.lock ./
 
-RUN bundle check || bundle install
+USER 1000:1000
 
+WORKDIR /app
 COPY . ./
 
 ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
+
