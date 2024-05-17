@@ -1,9 +1,13 @@
-#!/bin/sh
+#!/usr/bin/env bash
+# exit on error
+set -o errexit
 
-set -e
+bundle install
+bundle exec rails assets:precompile
+bundle exec rails assets:clean
 
-if [ -f tmp/pids/server.pid ]; then
-  rm tmp/pids/server.pid
-fi
+bundle exec rails db:setup
+bundle exec rails db:migrate
 
-bundle exec rails s -b 0.0.0.0
+bundle exec rails s
+
