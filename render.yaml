@@ -1,10 +1,8 @@
 services:
   - type: web # valid values: https://render.com/docs/yaml-spec#type
     name: kxback
-    dockerfilePath: ./Dockerfile
-    dockerCommand: ./entrypoints/docker-entrypoint.sh
     runtime: docker
-    plan: starter # optional; defaults to starter
+    plan: free # optional; defaults to starter
     numInstances: 1
     envVars:
       - key: RAILS_MASTER_KEY
