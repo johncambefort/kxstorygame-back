@@ -3,7 +3,8 @@ services:
     name: kxback
     runtime: ruby
     plan: free # optional; defaults to starter
-    startCommand: "./bin/render-build.sh"
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails server"
     numInstances: 1
     envVars:
       - key: BUNDLER_VERSION
