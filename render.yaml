@@ -3,7 +3,7 @@ services:
     name: kxback
     runtime: ruby
     plan: free # optional; defaults to starter
-    buildCommand: "./bin/render-build.sh"
+    startCommand: "./bin/render-build.sh"
     numInstances: 1
     envVars:
       - key: RAILS_MASTER_KEY
