@@ -1,8 +1,7 @@
 services:
   - type: web # valid values: https://render.com/docs/yaml-spec#type
     name: kxback
-    env: docker
-    dockerfilePath: "./Dockerfile"
+    runtime: docker
     plan: free # optional; defaults to starter
     numInstances: 1
     envVars:
