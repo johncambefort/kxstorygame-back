@@ -1,5 +1,7 @@
 FROM ruby:3.3.1-alpine
 
+ENV BUNDLER_VERSION=2.5.10
+
 RUN apk add --update --no-cache \
       binutils-gold \
       build-base \
