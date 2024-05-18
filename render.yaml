@@ -8,8 +8,6 @@ services:
     envVars:
       - key: RAILS_MASTER_KEY
         sync: false
-      - key: WEB_CONCURRENCY
-        value: 2 # sensible default
       - key: LANG
         value: en_US.UTF-8
       - key: RACK_ENV
