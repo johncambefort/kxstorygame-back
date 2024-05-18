@@ -1,6 +1,4 @@
-FROM ruby:3.2.2-alpine
-
-ENV BUNDLER_VERSION=2.4.20
+FROM ruby:3.3.1-alpine
 
 RUN apk add --update --no-cache \
       binutils-gold \
@@ -24,12 +22,10 @@ RUN apk add --update --no-cache \
       pkgconfig \
       postgresql-dev \
       postgresql-client \
-      nodejs \
-      python3 \
       tzdata \
       bash
 
-RUN gem install bundler -v 2.4.20
+RUN gem install bundler
 
 COPY Gemfile Gemfile.lock ./
 
