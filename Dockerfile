@@ -9,7 +9,6 @@ RUN apk add --update --no-cache \
       file \
       g++ \
       gcc \
-      git \
       less \
       libstdc++ \
       libffi-dev \
@@ -21,7 +20,6 @@ RUN apk add --update --no-cache \
       libgcrypt-dev \
       make \
       netcat-openbsd \
-      nodejs \
       openssl \
       pkgconfig \
       postgresql-dev \
