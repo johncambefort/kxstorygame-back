@@ -6,6 +6,8 @@ services:
     startCommand: "./bin/render-build.sh"
     numInstances: 1
     envVars:
+      - key: WEB_CONCURRENCY
+        value: 2
       - key: RAILS_MASTER_KEY
         sync: false
       - key: LANG
