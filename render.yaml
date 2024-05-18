@@ -1,8 +1,9 @@
 services:
   - type: web # valid values: https://render.com/docs/yaml-spec#type
     name: kxback
-    runtime: docker
+    runtime: ruby
     plan: free # optional; defaults to starter
+    buildCommand: "./bin/render-build.sh"
     numInstances: 1
     envVars:
       - key: RAILS_MASTER_KEY

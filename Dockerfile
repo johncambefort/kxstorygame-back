@@ -24,6 +24,7 @@ RUN apk add --update --no-cache \
       pkgconfig \
       postgresql-dev \
       postgresql-client \
+      nodejs \
       python3 \
       tzdata \
       bash
