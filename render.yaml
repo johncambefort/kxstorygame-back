@@ -6,8 +6,6 @@ services:
     plan: free # optional; defaults to starter
     numInstances: 1
     envVars:
-      - key: SECRET_KEY_BASE
-        sync: false
       - key: RAILS_MASTER_KEY
         sync: false
       - key: WEB_CONCURRENCY
