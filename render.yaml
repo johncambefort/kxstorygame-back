@@ -8,7 +8,7 @@ services:
     numInstances: 1
     envVars:
       - key: BUNDLER_VERSION
-        value: 2.4.20 
+        value: 2.5.10
       - key: WEB_CONCURRENCY
         value: 2
       - key: RAILS_MASTER_KEY
