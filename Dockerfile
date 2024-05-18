@@ -25,7 +25,7 @@ RUN apk add --update --no-cache \
       tzdata \
       bash
 
-RUN gem install bundler
+RUN gem install bundler -v 2.5.10
 
 COPY Gemfile Gemfile.lock ./
 
