@@ -68,12 +68,8 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   # to email in development mode
-  host = 'localhost:3000'
-  config.action_mailer.default_url_options = { :host => 'localhost:3000', protocol: 'http' }
-  
-  # to email in production mode
-  # host = 'example.com' #replace with your own url
-  # config.action_mailer.default_url_options = { host: host }
+  host = ENV['RENDER_EXTERNAL_HOSTNAME'] # for now, until I get a domain
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' } # TODO: use https?
 
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
