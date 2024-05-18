@@ -34,10 +34,10 @@ RUN gem install bundler -v 2.4.20
 
 COPY Gemfile Gemfile.lock ./
 
-USER 1000:1000
-
 WORKDIR /app
 COPY . ./
+
+RUN echo "starting dockerfile..."
 
 ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
 
