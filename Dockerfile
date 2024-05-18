@@ -37,7 +37,5 @@ COPY Gemfile Gemfile.lock ./
 WORKDIR /app
 COPY . ./
 
-RUN echo "starting dockerfile..."
-
 ENTRYPOINT ["./entrypoints/docker-entrypoint.sh"]
 
