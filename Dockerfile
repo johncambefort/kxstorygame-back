@@ -1,5 +1,8 @@
 FROM ruby:3.2.2-alpine
 
+ARG SECRET_KEY_BASE=""
+ENV SECRET_KEY_BASE ${SECRET_KEY_BASE}
+
 ENV BUNDLER_VERSION=2.4.20
 
 RUN apk add --update --no-cache \
