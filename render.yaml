@@ -6,6 +6,8 @@ services:
     startCommand: "./bin/render-build.sh"
     numInstances: 1
     envVars:
+      - key: BUNDLER_VERSION
+        value: 2.4.20 
       - key: WEB_CONCURRENCY
         value: 2
       - key: RAILS_MASTER_KEY
@@ -20,6 +22,8 @@ services:
         value: enabled
       - key: RAILS_SERVE_STATIC_FILES
         value: enabled
+      - key: PORT
+        sync: false
 
 databases: # Render PostgreSQL database
   - name: postgres-db
