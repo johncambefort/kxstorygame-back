@@ -5,8 +5,11 @@ class User < ApplicationRecord
   CONFIRMATION_TOKEN_EXPIRATION = 10.minutes
   PASSWORD_RESET_TOKEN_EXPIRATION = 10.minutes
 
-  has_and_belongs_to_many :poems
+  has_and_belongs_to_many :games
+  has_many :poems, through: :games
+
   has_many :active_sessions, dependent: :destroy
+
   has_secure_password
   attr_accessor :current_password
 
@@ -15,6 +18,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }, presence: true, uniqueness: true
   validates :unconfirmed_email, format: { with: URI::MailTo::EMAIL_REGEXP, allow_blank: true }
   validates :username, format: { with: /\A[a-z0-9A-Z]+\z/ }, length: { in: 4..20 }, presence: true, uniqueness: true
+
   def confirm!
     if unconfirmed_or_reconfirming?
       return false if unconfirmed_email.present? && !update(email: unconfirmed_email, unconfirmed_email: nil)

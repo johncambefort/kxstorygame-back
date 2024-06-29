@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root 'static_pages#home'
 
+  resources :games, only: %i[show new edit update]
+
+  scope controller: 'games' do
+    post '/play' => :create
+  end
+
   resources :poems, only: %i[index create show edit new update]
 
   resources :confirmations, only: %i[create edit new], param: :confirmation_token
