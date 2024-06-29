@@ -36,13 +36,13 @@ class PoemsController < ApplicationController
   def update
     @poem = Poem.find(params[:id])
     users = @poem.users
-    if users.last == current_user
-      redirect_to @poem,
-                  alert: 'You may not modify the poem until someone else does!' and return
-    end
+    # if users.last == current_user
+    #   redirect_to @poem,
+    #               alert: 'You may not modify the poem until someone else does!' and return
+    # end
     new_lines = new_lines_params[:new_lines]
     @poem.lines << "\r\n#{new_lines}"
-    @poem.users.push(current_user)
+    @poem.users.push(current_user).uniq!
     if @poem.save
       redirect_to @poem
     else
