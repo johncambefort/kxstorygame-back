@@ -67,3 +67,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
 end
+
+gem "base64", "~> 0.2.0"
+
+gem "mutex_m", "~> 0.3.0"
+
+gem "bigdecimal", "~> 3.1"

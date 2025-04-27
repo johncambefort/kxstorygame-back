@@ -70,8 +70,10 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     ast (2.4.2)
     backport (1.2.0)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark (0.3.0)
+    bigdecimal (3.1.9)
     bindex (0.8.1)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
@@ -133,6 +135,7 @@ GEM
     mini_mime (1.1.5)
     minitest (5.23.0)
     msgpack (1.7.2)
+    mutex_m (0.3.0)
     net-imap (0.4.11)
       date
       net-protocol
@@ -305,12 +308,15 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  base64 (~> 0.2.0)
   bcrypt (~> 3.1.7)
+  bigdecimal (~> 3.1)
   bootsnap
   capybara
   debug
   factory_bot_rails
   importmap-rails
+  mutex_m (~> 0.3.0)
   nokogiri
   pg (~> 1.5, >= 1.5.4)
   puma (~> 5.0)
