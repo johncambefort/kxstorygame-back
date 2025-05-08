@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_07_032809) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_29_175720) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,17 +25,25 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_07_032809) do
     t.index ["user_id"], name: "index_active_sessions_on_user_id"
   end
 
-  create_table "poems", force: :cascade do |t|
-    t.string "lines"
+  create_table "games", force: :cascade do |t|
+    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "poems_users", id: false, force: :cascade do |t|
-    t.bigint "poem_id", null: false
-    t.bigint "user_id", null: false
-    t.index ["poem_id"], name: "index_poems_users_on_poem_id"
-    t.index ["user_id"], name: "index_poems_users_on_user_id"
+  create_table "games_users", id: false, force: :cascade do |t|
+    t.bigint "game_id"
+    t.bigint "user_id"
+    t.index ["game_id"], name: "index_games_users_on_game_id"
+    t.index ["user_id"], name: "index_games_users_on_user_id"
+  end
+
+  create_table "poems", force: :cascade do |t|
+    t.string "lines"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "game_id"
+    t.index ["game_id"], name: "index_poems_on_game_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,4 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_07_032809) do
   end
 
   add_foreign_key "active_sessions", "users", on_delete: :cascade
+  add_foreign_key "poems", "games"
 end
